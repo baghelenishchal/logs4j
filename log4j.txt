@@ -1,0 +1,47 @@
+<configuration>
+
+    <!-- Console Appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log file for com.example.package1 -->
+    <appender name="PACKAGE1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/package1.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/package1.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log file for com.example.package2 -->
+    <appender name="PACKAGE2" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/package2.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/package2.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger -->
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <!-- Logger for com.example.package1 -->
+    <logger name="com.example.package1" level="debug">
+        <appender-ref ref="PACKAGE1"/>
+    </logger>
+
+    <!-- Logger for com.example.package2 -->
+    <logger name="com.example.package2" level="debug">
+        <appender-ref ref="PACKAGE2"/>
+    </logger>
+
+</configuration>
